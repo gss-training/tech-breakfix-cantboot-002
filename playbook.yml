@@ -1,0 +1,44 @@
+---
+- hosts: localhost
+  tasks:
+    - yum:
+        name: sos
+        state: present
+    - yum:
+        name: vim
+        state: present 
+
+    - name: 'Changing paramter in /etc/lvm/lvm.conf'
+      replace:
+            path: '/etc/lvm/lvm.conf'
+            regexp: 'use_lvmetad = 1'
+            replace: 'use_lvmetad = 0'
+            backup: yes
+
+    - name: 'Rebuild dracut'
+      shell:  'dracut -fv /boot/3.10.0-1160.el7.x86_64.img 3.10.0-1160.el7.x86_64'
+
+    - lvg:
+        vg: application
+        pvs: /dev/vdb
+
+    - lvol:
+        vg: application
+        lv: app
+        size: 1G
+
+    - filesystem:
+        fstype: xfs
+        dev: /dev/application/app
+    - mount:
+        fstype: xfs
+        src: /dev/application/app
+        path: /app
+        state: mounted
+
+    - name: 'Execute changes'
+      shell: /usr/local/bin/tech-breakfix-cantboot-002 break
+      args:
+        executable: /bin/bash
+...
+
