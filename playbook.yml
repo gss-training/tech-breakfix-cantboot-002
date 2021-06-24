@@ -3,7 +3,7 @@
   tasks:
     - name: Creating an empty file
       file:
-        path: "/tech-breakfix-cantboot-001"
+        path: "/tech-breakfix-cantboot-002"
         state: touch
     - yum:
         name: sos
