@@ -39,6 +39,13 @@
         src: /dev/application/app
         path: /app
         state: mounted
+    - name: 'Execute break'
+      shell: /usr/local/bin/tech-breakfix-cantboot-002 break
+      args:
+        executable: /bin/bash
+    - name: 'Reboot...'
+      shell: /usr/sbin/reboot
+
 
 ...
 
