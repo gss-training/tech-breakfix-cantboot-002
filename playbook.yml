@@ -1,6 +1,10 @@
 ---
 - hosts: localhost
   tasks:
+    - name: Creating an empty file
+      file:
+        path: "/tech-breakfix-cantboot-001"
+        state: touch
     - yum:
         name: sos
         state: present
