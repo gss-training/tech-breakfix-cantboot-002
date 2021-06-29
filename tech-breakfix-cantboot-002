@@ -32,8 +32,10 @@ break() {
         chmod +x /etc/rc.d/rc.local
 
         touch /var/tmp/.kc1
+        
         echo "Applying break....        DONE"
         echo "Your system has been modified."
+        reboot
 
 }
 
