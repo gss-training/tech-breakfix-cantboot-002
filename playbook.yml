@@ -43,8 +43,8 @@
       shell: /usr/local/bin/tech-breakfix-cantboot-002 break
       args:
         executable: /bin/bash
-    - name: 'Reboot...'
-      shell: /usr/sbin/reboot
+    #- name: 'Reboot...'
+    #  shell: /usr/sbin/reboot
 
 
 ...
