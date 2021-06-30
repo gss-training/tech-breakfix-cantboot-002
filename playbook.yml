@@ -20,7 +20,7 @@
             backup: yes
 
     - name: 'Rebuild dracut'
-      shell:  'dracut -fv /boot/3.10.0-1160.el7.x86_64.img 3.10.0-1160.el7.x86_64'
+      shell:  'dracut -fv /boot/initramfs-3.10.0-123.el7.x86_64.img 3.10.0-123.el7.x86_64'
 
     - lvg:
         vg: application
